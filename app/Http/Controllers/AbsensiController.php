@@ -146,21 +146,22 @@ class AbsensiController extends Controller
     }
 
      public function postAbsensi(Request $request) {
-       //$nim = $request['nim'];
-       //$tanggal = $request['tanggal'];
-       //$jam = $request['jam'];
-       //$keterangan=$request['keterangan'];
+        $nim = $request->input('nim');
+        $tanggal = $request->input('tanggal');
 
-       $absensi = new Absensi;
-       $absensi->nim = $request->input('nim');
-       $absensi->tanggal = $request->input('tanggal');
-       $absensi->jam = $request->input('jam');
-       $absensi->keterangan = $request->input('keterangan');
-       $absensi->save();
-
+        foreach ($request->input('absensi') as $abs)
+        {
+            $absensi = new Absensi;
+            $absensi->nim = $nim;
+            $absensi->tanggal = $tanggal;
+            $absensi->jam = $abs['jam'];
+            $absensi->keterangan = $abs['keterangan'];
+            $absensi->save();
+        }
 
         return [
-            "success" => "Post Successfully Created"
+            "success" => true,
+            "message" => "Absensi berhasil dicatat."
         ];
     }
 
