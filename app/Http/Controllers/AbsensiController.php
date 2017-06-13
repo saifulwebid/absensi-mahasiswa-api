@@ -146,16 +146,16 @@ class AbsensiController extends Controller
     }
 
      public function postAbsensi(Request $request) {
-       $nim = $request['nim'];
-       $tanggal = $request['tanggal'];
-       $jam = $request['jam'];
-       $keterangan=$request['keterangan'];
+       //$nim = $request['nim'];
+       //$tanggal = $request['tanggal'];
+       //$jam = $request['jam'];
+       //$keterangan=$request['keterangan'];
 
-       $absensi = new Absensi();
-       $absensi->nim = $nim;
-       $absensi->tanggal = $tanggal;
-       $absensi->jam = $jam;
-       $absensi->keterangan = $keterangan;
+       $absensi = new Absensi;
+       $absensi->nim = $request->input('nim');
+       $absensi->tanggal = $request->input('tanggal');
+       $absensi->jam = $request->input('jam');
+       $absensi->keterangan = $request->input('keterangan');
        $absensi->save();
 
 
