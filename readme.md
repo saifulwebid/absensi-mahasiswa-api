@@ -157,3 +157,38 @@ Respon sistem jika berhasil adalah sebagai berikut:
 Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/mahasiswa/{nim}
 
 Digunakan untuk mengambil data pribadi mahasiswa beserta kelas yang sedang aktif saat ini.
+
+### PATCH /absensi/{id_absen}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/{id_absen}
+
+Digunakan untuk mengubah data absen tertentu.
+
+Format request body seperti ini:
+
+```json
+{
+	"keterangan": "S"
+}
+```
+
+(Keterangan bisa berupa `S`, `I`, `A`, atau `H` -- kalau ternyata mau diralat jadi hadir).
+
+Kalau diubah jadi `S`, `I`, atau `A`, response akan seperti ini:
+
+```json
+{
+    "success": true,
+    "message": "Keterangan absensi berhasil diubah."
+}
+```
+
+Kalau diubah jadi `H`, response akan seperti ini:
+
+```json
+{
+    "success": true,
+    "message": "Absensi berhasil diputihkan."
+}
+```
+

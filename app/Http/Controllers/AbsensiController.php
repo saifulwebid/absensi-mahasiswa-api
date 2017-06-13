@@ -166,4 +166,29 @@ class AbsensiController extends Controller
         ];
     }
 
+    public function patchAbsensi(Request $request, $id_absen)
+    {
+        $absensi = Absensi::find($id_absen);
+
+        if ($request->input('keterangan') == 'H')
+        {
+            $absensi->delete();
+
+            return [
+                "success" => true,
+                "message" => "Absensi berhasil diputihkan."
+            ];
+        }
+        else
+        {
+            $absensi->keterangan = $request->input('keterangan');
+            $absensi->save();
+
+            return [
+                "success" => true,
+                "message" => "Keterangan absensi berhasil diubah."
+            ];
+        }
+    }
+
 }
