@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Absensi;
 use App\Kelas;
+use App\Semester;
 use Illuminate\Http\Request;
 
 class AbsensiController extends Controller
@@ -56,13 +57,16 @@ class AbsensiController extends Controller
 
     }
 
-    public function getRekapSemester($id_kelas)
+    public function getRekapSemester($id_kelas,$id_semester)
     {
         $list = Kelas::find($id_kelas);
+        $idsemester = Semester::find($id_semester);
 
+        $result = array();
         foreach ($list->mahasiswa as $mhs)
         {
-            $listcount = Absensi::where('nim', '=', $mhs->nim)->get();
+            $listcount = Absensi::where('nim', '=', $mhs->nim)
+                                ->whereBetween('tanggal',array($idsemester->tanggal_awal,$idsemester->tanggal_akhir))->get();
             $result[] = [
                 "nim" => $mhs->nim,
                 "nama" => $mhs->nama,
