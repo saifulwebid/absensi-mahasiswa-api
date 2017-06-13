@@ -1,6 +1,6 @@
 # API Gateway
 
-API Gateway dapat diakses di [http://api-absensi-mahasiswa.azurewebsites.net/](http://api-absensi-mahasiswa.azurewebsites.net/).
+API Gateway dapat diakses di [http://api-v2-absensi-mahasiswa.azurewebsites.net/](http://api-v2-absensi-mahasiswa.azurewebsites.net/).
 
 ## Endpoints
 
@@ -8,5 +8,5 @@ API Gateway dapat diakses di [http://api-absensi-mahasiswa.azurewebsites.net/](h
 
 Menampilkan semua kelas yang aktif di semester ini.
 
-Live: http://api-absensi-mahasiswa.azurewebsites.net/kelas/
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/kelas/
 
