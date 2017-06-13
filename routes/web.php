@@ -25,3 +25,4 @@ Route::get('/kelas/{id_kelas}/mahasiswa', 'MahasiswaController@getMahasiswaByKel
 Route::post('/login', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout');
 Route::get('/status', 'AuthController@me');
+Route::get('/me/absensi', 'ProfileController@getMyAbsensi');

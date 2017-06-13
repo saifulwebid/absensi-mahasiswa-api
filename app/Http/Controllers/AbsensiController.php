@@ -14,6 +14,7 @@ class AbsensiController extends Controller
     {
         $list = Absensi::where('nim', '=', $nim)->get();
 
+        $result = array();
         foreach ($list as $absensi)
         {
             $result[] = [
@@ -35,6 +36,7 @@ class AbsensiController extends Controller
             ['keterangan', '=', $keterangan],
         ])->get();
 
+        $result = array();
         foreach ($list as $absensi)
         {
             $result[] = [
@@ -48,7 +50,6 @@ class AbsensiController extends Controller
 
         return  [
               "jam" =>  count($result)
-
         ];
 
 

@@ -76,5 +76,11 @@ Melakukan logout dari sistem.
 
 Response sistem tidak penting, tetapi boleh dilihat.
 
+### GET /me/absensi
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/me/absensi
+
+Wajib dilakukan setelah **login sebagai mahasiswa**.
+
 
 
