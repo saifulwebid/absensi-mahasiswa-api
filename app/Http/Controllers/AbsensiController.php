@@ -20,6 +20,7 @@ class AbsensiController extends Controller
         {
             $result[] = [
 
+                "id_absen" => $absensi->id_absen,
                 "tanggal" => $absensi->tanggal,
                 "jam" => $absensi->jam,
                 "keterangan" => $absensi->keterangan,
@@ -145,7 +146,7 @@ class AbsensiController extends Controller
         return $result;
     }
 
-     public function postAbsensi(Request $request) {
+    public function postAbsensi(Request $request) {
         $nim = $request->input('nim');
         $tanggal = $request->input('tanggal');
 
