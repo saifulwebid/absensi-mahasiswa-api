@@ -52,6 +52,9 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'options' => [
+                PDO::MYSQL_ATTR_SSL_KEY => 'app/Certificates/MyServerCACert.pem',
+            ]
         ],
 
         'pgsql' => [
