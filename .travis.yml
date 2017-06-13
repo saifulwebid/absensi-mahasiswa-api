@@ -1,0 +1,13 @@
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+install: true
+
+script: composer install --prefer-dist
+
+deploy:
+  provider: azure_web_apps
+  skip_cleanup: true
