@@ -19,3 +19,6 @@ Route::get('/', function () {
 
 Route::get('/kelas', 'KelasController@getAllKelas');
 Route::get('/kelas/{id_kelas}/mahasiswa', 'MahasiswaController@getMahasiswaByKelas');
+Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout');
+Route::get('/status', 'AuthController@me');
