@@ -87,42 +87,116 @@ Wajib dilakukan setelah **login sebagai mahasiswa**.
 Live : http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/rekapsemester/{id_kelas}/idsemester/{id_semester}
 
 Menampilkan hasil rekap absen satu semester pada kelas tertentu berdasarkan parameter id kelas dan id semesternya. Dipaggil untuk format user TU.
-contoh keluaran :
-
-[{"nim":"141524001","nama":"Andre Febrianto S","totaljam":1},{"nim":"141524002","nama":"Anggi Nur Damayanty","totaljam":0},{"nim":"141524003","nama":"Eki Fauzi Firdaus","totaljam":0},{"nim":"141524004","nama":"Eva Danti Rahmanita","totaljam":0},{"nim":"141524005","nama":"Fadhlan Ridwanallah","totaljam":0},{"nim":"141524006","nama":"Fahmi Ramadhan","totaljam":0},{"nim":"141524007","nama":"Fariz Aotearoa Rasyid","totaljam":0},{"nim":"141524008","nama":"Hendro Saputro","totaljam":0},{"nim":"141524009","nama":"Hilda Annisa Nur Mauludin","totaljam":0},{"nim":"141524010","nama":"Ibnu Ali Mukhtarom","totaljam":0},{"nim":"141524011","nama":"Ifan Dhani Prasojo","totaljam":0},{"nim":"141524012","nama":"M Imam Fauzan PPN","totaljam":0},{"nim":"141524013","nama":"Maulana Kahfi","totaljam":0},{"nim":"141524014","nama":"Moch Arief Febriansyah","totaljam":0},{"nim":"141524015","nama":"Muhammad Rakasiwi Makkah","totaljam":0},{"nim":"141524016","nama":"Muhammad Ganjar Immanudin","totaljam":0},{"nim":"141524017","nama":"Muhammad Husain Fadhlullah","totaljam":0},{"nim":"141524018","nama":"Muhammad Ihyaul Khair","totaljam":0},{"nim":"141524019","nama":"Muhammad Rubiyanto Permana","totaljam":0}]
 
 
 ### GET /absensi/allabsensi/{nim}
 Live :  http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/allabsensi/{nim}
 
 Menampilkan riwayat absensi pada mahasiswa dengan nim tertentu. Digunakan untuk user mahasiswa.
-contoh keluaran :
-
-[{"tanggal":"2017-06-13","jam":1,"keterangan":"S"},{"tanggal":"2017-06-13","jam":1,"keterangan":"I"},{"tanggal":"2017-06-13","jam":2,"keterangan":"A"}]
 
 
 ### GET /absensi/totaljam/{nim}/keterangan/{keterangan}
 Live :    http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/totaljam/{nim}/keterangan/{keterangan}
 
 Memberikan total jam pada kategori absen tertentu (S/I/A) pada nim tertentu. Digunakan pada screen user mahasiswa.
-contoh keluaran :
-
-{"jam":1}
 
 
 ### GET /absensi/totaljamperkelas/{id_kelas}/tanggal/{tanggal}
-Live :     http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/totaljamperkelas/{id_kelas}/tanggal/{tanggal}
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/totaljamperkelas/{id_kelas}/tanggal/{tanggal}
 
 memberikan list daftar nama pada kelas tertentu dengan total sakit izin dan alpha. Digunakan untuk screen user TU.
-contoh keluaran :
-[{"nim":"141524001","nama":"Andre Febrianto S","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524002","nama":"Anggi Nur Damayanty","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524003","nama":"Eki Fauzi Firdaus","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524004","nama":"Eva Danti Rahmanita","kelas":"3A","totaljamsakit":1,"totaljamijin":1,"totaljamalpha":1},{"nim":"141524005","nama":"Fadhlan Ridwanallah","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524006","nama":"Fahmi Ramadhan","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524007","nama":"Fariz Aotearoa Rasyid","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524008","nama":"Hendro Saputro","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524009","nama":"Hilda Annisa Nur Mauludin","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524010","nama":"Ibnu Ali Mukhtarom","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524011","nama":"Ifan Dhani Prasojo","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524012","nama":"M Imam Fauzan PPN","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524013","nama":"Maulana Kahfi","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524014","nama":"Moch Arief Febriansyah","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524015","nama":"Muhammad Rakasiwi Makkah","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524016","nama":"Muhammad Ganjar Immanudin","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524017","nama":"Muhammad Husain Fadhlullah","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524018","nama":"Muhammad Ihyaul Khair","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0},{"nim":"141524019","nama":"Muhammad Rubiyanto Permana","kelas":"3A","totaljamsakit":0,"totaljamijin":0,"totaljamalpha":0}]
-
-
 
 ### GET /absensi/totaljamkeseluruhan/{nim}
 Live :     http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/totaljamkeseluruhan/{nim}
 
 Memberikan keterangan total jam akumulasi dari izin sakit dan alpha pada nim tertentu. Digunakan pada screen user mahasiswa.
 
-contoh keluaran :
-{"jam":3}
+### POST /absensi/allabsensi
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/allabsensi
+
+Mencatat ketidakhadiran mahasiswa.
+
+Format input sebagai berikut:
+
+```json
+{
+	"nim": "141524020",
+	"tanggal": "2016-06-14",
+	"absensi": [
+		{"jam": 3, "keterangan": "S"},
+		{"jam": 4, "keterangan": "I"},
+		{"jam": 5, "keterangan": "A"}
+	]
+}
+```
+
+Kalau hanya satu jam tidak masuknya, formatnya tetap array, sebagai berikut:
+
+```json
+{
+	"nim": "141524020",
+	"tanggal": "2016-06-14",
+	"absensi": [
+		{"jam": 3, "keterangan": "S"}
+	]
+}
+```
+
+Respon sistem jika berhasil adalah sebagai berikut:
+
+```json
+{
+    "success": true,
+    "message": "Absensi berhasil dicatat."
+}
+```
+
+### GET /mahasiswa/{nim}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/mahasiswa/{nim}
+
+Digunakan untuk mengambil data pribadi mahasiswa beserta kelas yang sedang aktif saat ini.
+
+### PATCH /absensi/{id_absen}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/{id_absen}
+
+Digunakan untuk mengubah data absen tertentu.
+
+Format request body seperti ini:
+
+```json
+{
+	"keterangan": "S"
+}
+```
+
+(Keterangan bisa berupa `S`, `I`, `A`, atau `H` -- kalau ternyata mau diralat jadi hadir).
+
+Kalau diubah jadi `S`, `I`, atau `A`, response akan seperti ini:
+
+```json
+{
+    "success": true,
+    "message": "Keterangan absensi berhasil diubah."
+}
+```
+
+Kalau diubah jadi `H`, response akan seperti ini:
+
+```json
+{
+    "success": true,
+    "message": "Absensi berhasil diputihkan."
+}
+```
+
+### GET absensi/{nim}/{tanggal}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/{nim}/{tanggal}
+
+Digunakan untuk mengambil data absen seseorang di tanggal tertentu. Digunakan utamanya untuk form edit absen.
+
+**Format tanggal berupa YYYY-MM-DD.**
+

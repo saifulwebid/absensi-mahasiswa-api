@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/kelas', 'KelasController@getAllKelas');
 Route::get('/absensi/rekapsemester/{id_kelas}/idsemester/{id_semester}', 'AbsensiController@getRekapSemester');
 Route::get('/absensi/allabsensi/{nim}', 'AbsensiController@getAllAbsensiByNim');
-Route::post('/absensi/allabsensi/postabsensi', 'AbsensiController@postAbsensi');
+Route::post('/absensi/allabsensi', 'AbsensiController@postAbsensi');
 Route::get('/absensi/totaljam/{nim}/keterangan/{keterangan}', 'AbsensiController@getTotalJamPerKategori');
 Route::get('/absensi/totaljamperkelas/{id_kelas}/tanggal/{tanggal}', 'AbsensiController@getAbsenPerkelasPertanggal');
 Route::get('/absensi/totaljamkeseluruhan/{nim}', 'AbsensiController@getTotalJamKeseluruhan');
@@ -29,3 +29,6 @@ Route::post('/login', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout');
 Route::get('/status', 'AuthController@me');
 Route::get('/me/absensi', 'ProfileController@getMyAbsensi');
+Route::get('/mahasiswa/{nim}', 'MahasiswaController@getSingleMahasiswa');
+Route::patch('/absensi/{id_absen}', 'AbsensiController@patchAbsensi');
+Route::get('/absensi/{nim}/{tanggal}', 'AbsensiController@getAbsenByMahasiswaByTanggal');

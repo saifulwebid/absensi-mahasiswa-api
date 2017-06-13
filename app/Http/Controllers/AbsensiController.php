@@ -20,6 +20,7 @@ class AbsensiController extends Controller
         {
             $result[] = [
 
+                "id_absen" => $absensi->id_absen,
                 "tanggal" => $absensi->tanggal,
                 "jam" => $absensi->jam,
                 "keterangan" => $absensi->keterangan,
@@ -161,23 +162,78 @@ class AbsensiController extends Controller
         return $result;
     }
 
-     public function postAbsensi(Request $request) {
-       //$nim = $request['nim'];
-       //$tanggal = $request['tanggal'];
-       //$jam = $request['jam'];
-       //$keterangan=$request['keterangan'];
+    public function postAbsensi(Request $request) {
+        $nim = $request->input('nim');
+        $tanggal = $request->input('tanggal');
 
-       $absensi = new Absensi;
-       $absensi->nim = $request->input('nim');
-       $absensi->tanggal = $request->input('tanggal');
-       $absensi->jam = $request->input('jam');
-       $absensi->keterangan = $request->input('keterangan');
-       $absensi->save();
-
+        foreach ($request->input('absensi') as $abs)
+        {
+            $absensi = new Absensi;
+            $absensi->nim = $nim;
+            $absensi->tanggal = $tanggal;
+            $absensi->jam = $abs['jam'];
+            $absensi->keterangan = $abs['keterangan'];
+            $absensi->save();
+        }
 
         return [
-            "success" => "Post Successfully Created"
+            "success" => true,
+            "message" => "Absensi berhasil dicatat."
         ];
+    }
+
+    public function patchAbsensi(Request $request, $id_absen)
+    {
+        $absensi = Absensi::find($id_absen);
+
+        if ($request->input('keterangan') == 'H')
+        {
+            $absensi->delete();
+
+            return [
+                "success" => true,
+                "message" => "Absensi berhasil diputihkan."
+            ];
+        }
+        else
+        {
+            $absensi->keterangan = $request->input('keterangan');
+            $absensi->save();
+
+            return [
+                "success" => true,
+                "message" => "Keterangan absensi berhasil diubah."
+            ];
+        }
+    }
+
+    public function getAbsenByMahasiswaByTanggal($nim, $tanggal)
+    {
+        $mahasiswaController = new MahasiswaController();
+        $mahasiswa = $mahasiswaController->getSingleMahasiswa($nim);
+
+        $list = Absensi::where([
+            ['nim', '=', $nim],
+            ['tanggal', '=', $tanggal]
+        ])->get();
+
+        $absen = [];
+        for ($i = 1; $i <= 12; $i++)
+            $absen[$i] = 'H';
+
+        foreach ($list as $row)
+            $absen[$row->jam] = $row->keterangan;
+
+        $result['absensi'] = [];
+        for ($i = 1; $i <= 12; $i++)
+        {
+            $result['absensi'][] = [
+                "jam" => $i,
+                "keterangan" => $absen[$i]
+            ];
+        }
+        $result = $mahasiswa + $result;
+        return $result;
     }
 
 }

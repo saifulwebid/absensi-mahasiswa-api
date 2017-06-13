@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kelas;
+use App\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -20,5 +21,27 @@ class MahasiswaController extends Controller
         }
 
         return $result;
+    }
+
+    public function getSingleMahasiswa($nim)
+    {
+        $mhs = Mahasiswa::find($nim);
+
+        $id_kelas = 0;
+        $kelas = null;
+        foreach ($mhs->kelas as $row)
+        {
+            if ($row->id_kelas > $id_kelas)
+            {
+                $id_kelas = $row->id_kelas;
+                $kelas = $row;
+            }
+        }
+
+        return [
+            "nim" => $mhs->nim,
+            "nama" => $mhs->nama,
+            "kelas" => $kelas->tingkat_kelas . $kelas->nama_kelas . "-" . $kelas->program_studi->nama_program_studi
+        ];
     }
 }
