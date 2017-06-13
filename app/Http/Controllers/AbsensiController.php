@@ -135,10 +135,26 @@ class AbsensiController extends Controller
         {
             $listcount = Absensi::where('nim', '=', $mhs->nim)
                                 ->whereBetween('tanggal',array($idsemester->tanggal_awal,$idsemester->tanggal_akhir))->get();
+            $listijin = Absensi::where([
+                ['nim', '=', $mhs->nim],
+                ['keterangan','=','I']
+
+            ])->whereBetween('tanggal',array($idsemester->tanggal_awal,$idsemester->tanggal_akhir))->get();
+            $listsakit = Absensi::where([
+                ['nim', '=', $mhs->nim],
+                ['keterangan','=','S']
+
+            ])->whereBetween('tanggal',array($idsemester->tanggal_awal,$idsemester->tanggal_akhir))->get();
+            $listalpha = Absensi::where([
+                ['nim', '=', $mhs->nim],
+                ['keterangan','=','A']
+
+            ])->whereBetween('tanggal',array($idsemester->tanggal_awal,$idsemester->tanggal_akhir))->get();
             $result[] = [
                 "nim" => $mhs->nim,
                 "nama" => $mhs->nama,
-                "totaljam" => count($listcount)
+                "totaljam" => count($listcount),
+                "keterangan" => "S:".count($listsakit).",I:".count($listijin).",A:".count($listalpha)
             ];
         }
 
