@@ -30,3 +30,17 @@ Route::get('/kelas', function() {
 
     return $result;
 });
+
+Route::get('/kelas/{id}/mahasiswa', function ($id) {
+    $list = Kelas::find($id);
+
+    foreach ($list->mahasiswa as $mhs)
+    {
+        $result[] = [
+            "nim" => $mhs->nim,
+            "nama" => $mhs->nama
+        ];
+    }
+
+    return $result;
+});

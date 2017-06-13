@@ -13,4 +13,9 @@ class Kelas extends Model
     {
         return $this->belongsTo('App\ProgramStudi', 'id_program_studi');
     }
+
+    public function mahasiswa()
+    {
+        return $this->belongsToMany('App\Mahasiswa', 'kelas_mahasiswa', 'id_kelas', 'nim');
+    }
 }
