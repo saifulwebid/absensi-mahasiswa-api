@@ -152,3 +152,8 @@ Respon sistem jika berhasil adalah sebagai berikut:
 }
 ```
 
+### GET /mahasiswa/{nim}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/mahasiswa/{nim}
+
+Digunakan untuk mengambil data pribadi mahasiswa beserta kelas yang sedang aktif saat ini.
