@@ -31,3 +31,4 @@ Route::get('/status', 'AuthController@me');
 Route::get('/me/absensi', 'ProfileController@getMyAbsensi');
 Route::get('/mahasiswa/{nim}', 'MahasiswaController@getSingleMahasiswa');
 Route::patch('/absensi/{id_absen}', 'AbsensiController@patchAbsensi');
+Route::get('/absensi/{nim}/{tanggal}', 'AbsensiController@getAbsenByMahasiswaByTanggal');

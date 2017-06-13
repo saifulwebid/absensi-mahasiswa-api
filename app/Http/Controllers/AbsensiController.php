@@ -191,4 +191,33 @@ class AbsensiController extends Controller
         }
     }
 
+    public function getAbsenByMahasiswaByTanggal($nim, $tanggal)
+    {
+        $mahasiswaController = new MahasiswaController();
+        $mahasiswa = $mahasiswaController->getSingleMahasiswa($nim);
+
+        $list = Absensi::where([
+            ['nim', '=', $nim],
+            ['tanggal', '=', $tanggal]
+        ])->get();
+
+        $absen = [];
+        for ($i = 1; $i <= 12; $i++)
+            $absen[$i] = 'H';
+
+        foreach ($list as $row)
+            $absen[$row->jam] = $row->keterangan;
+
+        $result['absensi'] = [];
+        for ($i = 1; $i <= 12; $i++)
+        {
+            $result['absensi'][] = [
+                "jam" => $i,
+                "keterangan" => $absen[$i]
+            ];
+        }
+        $result = $mahasiswa + $result;
+        return $result;
+    }
+
 }

@@ -192,3 +192,11 @@ Kalau diubah jadi `H`, response akan seperti ini:
 }
 ```
 
+### GET absensi/{nim}/{tanggal}
+
+Live: http://api-v2-absensi-mahasiswa.azurewebsites.net/absensi/{nim}/{tanggal}
+
+Digunakan untuk mengambil data absen seseorang di tanggal tertentu. Digunakan utamanya untuk form edit absen.
+
+**Format tanggal berupa YYYY-MM-DD.**
+
