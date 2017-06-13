@@ -153,7 +153,7 @@ class AbsensiController extends Controller
 
        $absensi = new Absensi;
        $absensi->nim = $request->input('nim');
-       $absensi->tanggal = $requset->input('tanggal');
+       $absensi->tanggal = $request->input('tanggal');
        $absensi->jam = $request->input('jam');
        $absensi->keterangan = $request->input('keterangan');
        $absensi->save();
