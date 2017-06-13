@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/kelas', 'KelasController@getAllKelas');
+Route::get('/absensi/allabsensi/{nim}', 'AbsensiController@getAllAbsensiByNim');
 Route::get('/kelas/{id_kelas}/mahasiswa', 'MahasiswaController@getMahasiswaByKelas');
